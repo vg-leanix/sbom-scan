@@ -11,7 +11,7 @@ inputs:
   ort-reporter-args:
     description: "Additional ORT reporter cli args"
     required: false
-    default: "-O CycloneDx=output.file.formats=json CycloneDx=single.bom=false"
+    default: "-O CycloneDx=output.file.formats=json -O CycloneDx=single.bom=false"
   run-modes:
     description: "ORT modules to run. Default is only analyzer and CycloneDX output."
     required: false
