@@ -37,7 +37,7 @@ runs:
     - name: List file directory
       shell: bash
       run: |
-        cd $HOME && ls -la
+        sudo apt install tree && cd $HOME && tree -l 3
     # - name: Upload SBOM to VSM
     #   id: vsm
     #   uses: leanix/vsm-discovery-github-action@v1.0.0
