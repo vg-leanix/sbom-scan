@@ -37,7 +37,7 @@ runs:
     - name: List file directory
       shell: bash
       run: |
-        cd $HOME && ls -la
+        cd $ORT_RESULTS_PATH && ls -la
     # - name: Upload SBOM to VSM
     #   id: vsm
     #   uses: leanix/vsm-discovery-github-action@v1.0.0
