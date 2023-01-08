@@ -20,6 +20,12 @@ inputs:
       analyzer,
       reporter,
       upload-results
+  sbom-path:
+    description: "the path to point to the sbom file."
+    default: "${{env.ORT_RESULTS_PATH}}/bom.cyclonedx.json"
+  source-instance:
+    description: "how to call the baby"
+    default: "test-run"
 
 runs:
   using: "composite"
@@ -33,7 +39,7 @@ runs:
       with:
         run: ${{inputs.run-modes}}
         ort-cli-report-args: ${{inputs.ort-reporter-args}}
-        report-formats: 'CycloneDX'
+        report-formats: "CycloneDX"
     - name: List file directory
       shell: bash
       run: |
@@ -44,6 +50,4 @@ runs:
       uses: leanix/vsm-discovery-github-action@update-sbom-path
       with:
         api-token: ${{inputs.api-token}}
-        sbom-path: '${{env.ORT_RESULTS_PATH}}/bom.cyclonedx.json'
-        source-instance: 'ort-scanner'
-
+        source-instance: "ort-scanner"
