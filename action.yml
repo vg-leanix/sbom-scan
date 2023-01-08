@@ -45,3 +45,5 @@ runs:
       with:
         api-token: ${{inputs.api-token}}
         sbom-path: '${{env.ORT_RESULTS_PATH}}/bom.cyclonedx.json'
+        source-instance: 'ort-scanner'
+
