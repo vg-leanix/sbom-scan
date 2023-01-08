@@ -1,0 +1,45 @@
+name: "SBOM Scan"
+description: "Integrate into your CI/CD pipeline to manage service and SBOM information automatically for your LeanIX VSM workspace"
+inputs:
+  host:
+    description: "The LeanIX host base url of your workspace, e.g.: leanix.leanix.net"
+    required: true
+    default: "eu.leanix.net"
+  api-token:
+    description: "technical user token for VSM workspace"
+    required: true
+  ort-reporter-args:
+    description: "Additional ORT reporter cli args"
+    required: false
+    default: "-O CycloneDx=output.file.formats=json"
+  run-modes:
+    description: "ORT modules to run. Default is only analyzer and CycloneDX output."
+    required: false
+    default: >
+      cache-dependencies,
+      analyzer,
+      reporter,
+      upload-results
+
+runs:
+  using: "composite"
+  steps:
+    - name: Scan GitHub repo
+      id: ort
+      uses: oss-review-toolkit/ort-ci-github-action@v1
+      with:
+        run: ${{inputs.run-modes}}
+        ort-cli-report-args: ${{inputs.ort-reporter-args}}
+    - name: List file directory
+      shell: bash
+      run: |
+        echo pwd && ls
+    # - name: Upload SBOM to VSM
+    #   id: vsm
+    #   uses: leanix/vsm-discovery-github-action@v1.0.0
+    #   with:
+    #     api-token: ${{inputs.api-token}}
+    #     host: ${{inputs.host}}
+    #     sbom-path: 
+
+
