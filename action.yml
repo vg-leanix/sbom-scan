@@ -32,7 +32,7 @@ runs:
       uses: oss-review-toolkit/ort-ci-github-action@v1
       with:
         run: ${{inputs.run-modes}}
-        ort-cli-report-args: ${{inputs.ort-reporter-args}}, '-o ${ORT_RESULTS_PATH/$USER/ort/sboms}'
+        ort-cli-report-args: ${{inputs.ort-reporter-args}}
         report-formats: 'CycloneDX'
     - name: List file directory
       shell: bash
