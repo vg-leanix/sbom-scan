@@ -41,7 +41,7 @@ runs:
 
     - name: Upload SBOM to VSM
       id: vsm
-      uses: leanix/vsm-discovery-github-action@v1.0.0
+      uses: leanix/vsm-discovery-github-action@update-sbom-path
       with:
         api-token: ${{inputs.api-token}}
         sbom-path: '${{env.ORT_RESULTS_PATH}}/bom.cyclonedx.json'
