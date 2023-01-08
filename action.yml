@@ -44,4 +44,4 @@ runs:
       uses: leanix/vsm-discovery-github-action@v1.0.0
       with:
         api-token: ${{inputs.api-token}}
-        sbom-path: '${ORT_RESULTS_PATH/bom.cyclonedx.json}'
+        sbom-path: '${{env.ORT_RESULTS_PATH}}/bom.cyclonedx.json'
