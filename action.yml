@@ -22,7 +22,7 @@ inputs:
       upload-results
   sbom-path:
     description: "the path to point to the sbom file."
-    default: "${{env.ORT_RESULTS_PATH}}/bom.cyclonedx.json"
+    default: "bom.json"
   source-instance:
     description: "how to call the baby"
     default: "test-run"
@@ -51,3 +51,4 @@ runs:
       with:
         api-token: ${{inputs.api-token}}
         source-instance: "ort-scanner"
+        sbom-path: '${{env.ORT_RESULTS_PATH}}/bom.cyclonedx.json'
