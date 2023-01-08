@@ -24,6 +24,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
     - name: Scan GitHub repo
       id: ort
       uses: oss-review-toolkit/ort-ci-github-action@v1
@@ -40,6 +43,4 @@ runs:
     #   with:
     #     api-token: ${{inputs.api-token}}
     #     host: ${{inputs.host}}
-    #     sbom-path: 
-
-
+    #     sbom-path:
